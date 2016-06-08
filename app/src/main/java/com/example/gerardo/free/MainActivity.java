@@ -2,14 +2,30 @@ package com.example.gerardo.free;
 
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.view.MenuItem;
+import fragments.FragmentAyuda;
+import fragments.FragmentEventos;
+import fragments.FragmentInvitaAmigos;
+import fragments.FragmentLocalizacion;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by MasterHardisk on 8/06/16.
+ */
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private FragmentInvitaAmigos fragmentInvitaAmigos;
+    private FragmentAyuda fragmentAyuda;
+    private FragmentLocalizacion fragmentLocalizacion;
+    private FragmentEventos fragmentEventos;
+    private FragmentTransaction transaction;
+    private FragmentManager mManager;
     private Toolbar mtoolbar;
     private NavigationView mDrawer;
     private DrawerLayout mDrawerLayout;
@@ -18,9 +34,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mManager=getSupportFragmentManager();
         mtoolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mtoolbar);
+        FragmentEventos fragmentEventos = new FragmentEventos();
+        FragmentTransaction transaction = mManager.beginTransaction();
+        transaction.add(R.id.main_content, fragmentEventos, "Eventos");
+        transaction.commit();
         mDrawer = (NavigationView) findViewById(R.id.main_drawer);
+        mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout,
@@ -37,4 +59,40 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        if(item.getItemId()== R.id.navigation_item1){
+             fragmentEventos = new FragmentEventos();
+            transaction = mManager.beginTransaction();
+            transaction.replace(R.id.main_content, fragmentEventos, "Eventos");
+            transaction.commit();
+            mDrawerLayout.closeDrawer(mDrawer);
+        }
+        if(item.getItemId()== R.id.navigation_item2){
+            fragmentLocalizacion = new FragmentLocalizacion();
+            transaction = mManager.beginTransaction();
+            transaction.replace(R.id.main_content, fragmentLocalizacion, "Localizacion");
+            transaction.commit();
+            mDrawerLayout.closeDrawer(mDrawer);
+        }
+        if(item.getItemId()==R.id.navigation_item3){
+            fragmentInvitaAmigos = new FragmentInvitaAmigos();
+            transaction = mManager.beginTransaction();
+            transaction.replace(R.id.main_content, fragmentInvitaAmigos, "Invita Amigos");
+            transaction.commit();
+            mDrawerLayout.closeDrawer(mDrawer);
+        }
+        if(item.getItemId()==R.id.navigation_item4){
+            fragmentAyuda = new FragmentAyuda();
+            transaction = mManager.beginTransaction();
+            transaction.replace(R.id.main_content, fragmentAyuda,"Ayuda");
+            transaction.commit();
+            mDrawerLayout.closeDrawer(mDrawer);
+        }
+
+        return false;
+    }
+
+
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:id="@+id/navigation_item1"
+        android:icon="@drawable/ic_eventos"
+    android:title="Eventos"/>
+
+    <item
+        android:id="@+id/navigation_item2"
+        android:icon="@drawable/ic_location"
+        android:title="Localización" />
+    <item
+        android:id="@+id/navigation_item3"
+        android:icon="@drawable/ic_share"
+        android:title="Invita a tus Amigos"/>
+    <item
+        android:id="@+id/navigation_item4"
+        android:icon="@drawable/ic_help"
+        android:title="Ayuda"/>
+</menu>
