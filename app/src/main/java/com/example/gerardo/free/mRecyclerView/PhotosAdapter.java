@@ -21,10 +21,11 @@ import java.util.List;
  */
 public class PhotosAdapter extends RecyclerView.Adapter <PhotosAdapter.MyViewHolder>{
     private LayoutInflater inflater;
-    Context c;
-    List<InfoPhoto> photos = Collections.emptyList();
+    Context context;
+    List<String> photos = Collections.emptyList();
 
-    public PhotosAdapter(Context c, List<InfoPhoto> photos){
+    public PhotosAdapter(Context c, List<String> photos){
+        this.context = c;
         this.photos = photos;
         inflater=LayoutInflater.from(c);
     }
@@ -39,7 +40,14 @@ public class PhotosAdapter extends RecyclerView.Adapter <PhotosAdapter.MyViewHol
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-       IonClient.downloadImage(c, photos.get(position).toString(), holder.photo);
+
+        if(context!=null) {
+           Ion.with(context)
+                   .load(photos.get(position))
+                   .withBitmap()
+                   .intoImageView(holder.photo);
+       }
+       //IonClient.downloadImage(c, photos.get(position).toString(), holder.photo);
 
     }
 

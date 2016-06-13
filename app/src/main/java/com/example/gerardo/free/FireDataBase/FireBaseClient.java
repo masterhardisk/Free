@@ -17,22 +17,20 @@ import java.util.List;
  * Created by MasterHardisk on 12/06/16.
  */
 public class FireBaseClient {
-    Context c;
+    private Context context;
     String DB_URL;
     RecyclerView recyclerView;
     Firebase fire;
-    ArrayList<InfoPhoto> photos;
+    ArrayList<String> photos;
     PhotosAdapter photosAdapter;
 
     public FireBaseClient(Context c, String DB_URL, RecyclerView recyclerView) {
-        this.c = c;
+        this.context = c;
         this.DB_URL = DB_URL;
         this.recyclerView = recyclerView;
         photos = new ArrayList<>();
         Firebase.setAndroidContext(c);
         fire = new Firebase(DB_URL);
-
-
     }
 
 
@@ -59,11 +57,11 @@ public class FireBaseClient {
         photos.clear();
         for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
             InfoPhoto photo = dataSnapshot1.getValue(InfoPhoto.class);
-            photos.add(photo);
+            photos.add(photo.getUrlphoto());
         }
-        if(photos.size()>0){
-           System.out.println(photos);
-            photosAdapter = new PhotosAdapter(c, photos);
+        if(photos.size()>0 && context!=null){
+
+            photosAdapter = new PhotosAdapter(context, photos);
             recyclerView.setAdapter(photosAdapter);
         }else{
             System.out.println("No hay fotos");

@@ -1,5 +1,6 @@
 package com.example.gerardo.free.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,7 @@ public class FragmentImages extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_images, container, false);
         recyclerView= (RecyclerView) view.findViewById(R.id.recyclerviewPhotos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        fireBaseClient = new FireBaseClient(getActivity().getApplicationContext(), DB_URL, recyclerView);
+        fireBaseClient = new FireBaseClient(getContext().getApplicationContext(), DB_URL, recyclerView);
         fireBaseClient.refreshData();
         return view;
     }
