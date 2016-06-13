@@ -11,8 +11,8 @@
         android:title="Localización" />
     <item
         android:id="@+id/navigation_item3"
-        android:icon="@drawable/ic_share"
-        android:title="Invita a tus Amigos"/>
+        android:icon="@drawable/ic_photos"
+        android:title="Imagenes"/>
     <item
         android:id="@+id/navigation_item4"
         android:icon="@drawable/ic_help"

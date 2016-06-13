@@ -1,9 +1,10 @@
-package fragments;
+package com.example.gerardo.free.Fragments;
 
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -44,6 +44,11 @@ public class FragmentLocalizacion extends Fragment implements OnMapReadyCallback
                 .title("FREESTYLE")
                 .snippet("Aqui es la fiesta")
                 .position(new LatLng(40.71533, 0.57694)));
+
+
+
+
+
 
     }
 }

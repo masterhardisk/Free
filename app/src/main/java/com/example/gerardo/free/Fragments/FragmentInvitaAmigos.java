@@ -1,4 +1,4 @@
-package fragments;
+package com.example.gerardo.free.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import com.example.gerardo.free.R;
 
 /**
- * Created by MasterHarsik on 8/06/16.
+ * Created by MasterHardisk on 8/06/16.
  */
-public class FragmentAyuda extends Fragment {
+public class FragmentInvitaAmigos extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_ayuda, container, false);
+        return inflater.inflate(R.layout.fragment_invitaamigos, container, false);
     }
 }

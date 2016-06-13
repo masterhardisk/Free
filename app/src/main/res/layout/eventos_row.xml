@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:padding="8dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewEventos"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewFecha"
+        android:layout_alignBottom="@+id/imageViewEventos"
+        android:layout_toRightOf="@+id/imageViewEventos"
+        android:layout_toEndOf="@+id/imageViewEventos" />
+
+    <TextView
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewEventos"
+        android:layout_alignTop="@+id/imageViewEventos"
+        android:layout_toRightOf="@+id/imageViewEventos" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/separador"
+        android:background="@drawable/separador"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

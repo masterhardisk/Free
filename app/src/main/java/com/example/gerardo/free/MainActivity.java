@@ -10,17 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import fragments.FragmentAyuda;
-import fragments.FragmentEventos;
-import fragments.FragmentInvitaAmigos;
-import fragments.FragmentLocalizacion;
+
+import com.example.gerardo.free.Fragments.FragmentAyuda;
+import com.example.gerardo.free.Fragments.FragmentEventos;
+import com.example.gerardo.free.Fragments.FragmentImages;
+import com.example.gerardo.free.Fragments.FragmentLocalizacion;
 
 /**
  * Created by MasterHardisk on 8/06/16.
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FragmentInvitaAmigos fragmentInvitaAmigos;
+    private FragmentImages fragmentImages;
     private FragmentAyuda fragmentAyuda;
     private FragmentLocalizacion fragmentLocalizacion;
     private FragmentEventos fragmentEventos;
@@ -77,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mDrawerLayout.closeDrawer(mDrawer);
         }
         if(item.getItemId()==R.id.navigation_item3){
-            fragmentInvitaAmigos = new FragmentInvitaAmigos();
+            fragmentImages = new FragmentImages();
             transaction = mManager.beginTransaction();
-            transaction.replace(R.id.main_content, fragmentInvitaAmigos, "Invita Amigos");
+            transaction.replace(R.id.main_content, fragmentImages, "Imagenes");
             transaction.commit();
             mDrawerLayout.closeDrawer(mDrawer);
         }
