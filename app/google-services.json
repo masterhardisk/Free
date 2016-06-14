@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "47808335462",
-    "firebase_url": "https://freestyle-1337.firebaseio.com",
-    "project_id": "freestyle-1337",
-    "storage_bucket": "freestyle-1337.appspot.com"
+    "project_number": "963643660989",
+    "firebase_url": "https://pubfreestyle.firebaseio.com",
+    "project_id": "project-6423673664632179304",
+    "storage_bucket": "project-6423673664632179304.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:47808335462:android:bd1ec92e1ea56619",
+        "mobilesdk_app_id": "1:963643660989:android:bd1ec92e1ea56619",
         "android_client_info": {
           "package_name": "com.example.gerardo.free"
         }
       },
       "oauth_client": [
         {
-          "client_id": "47808335462-sblvf3fmqk0aootcb4jc6epq2st8uqr7.apps.googleusercontent.com",
+          "client_id": "963643660989-fhd78bgnosj79459te0ggbe94avennsf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.gerardo.free",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "47808335462-rlfdqadln0l7hqhu165v9u283n4v2oce.apps.googleusercontent.com",
+          "client_id": "963643660989-4okci6uemavlcnp713cp0isqid6aglm4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDlz5Cg-tFDkw5h9GDyd0W-PJYGloYXR9s"
+          "current_key": "AIzaSyBKConjGLEha4HoaqheJRx-jDd692GlTk4"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "47808335462-rlfdqadln0l7hqhu165v9u283n4v2oce.apps.googleusercontent.com",
+              "client_id": "963643660989-4okci6uemavlcnp713cp0isqid6aglm4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
