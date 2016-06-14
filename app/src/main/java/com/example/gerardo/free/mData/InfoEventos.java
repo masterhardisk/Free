@@ -4,34 +4,34 @@ package com.example.gerardo.free.mData;
  * Created by MasterHardisk on 11/06/16.
  */
 public class InfoEventos {
-    private int iconId;
-    private String Title;
-    private String date;
+    private String fecha;
+    private String titulo;
+    private String urlphoto;
 
     public InfoEventos() {
     }
 
-    public int getIconId() {
-        return iconId;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setIconId(int iconId) {
-        this.iconId = iconId;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getTitle() {
-        return Title;
+    public String getUrlphoto() {
+        return urlphoto;
     }
 
-    public void setTitle(String title) {
-        Title = title;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getDate() {
-        return date;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setUrlphoto(String urlphoto) {
+        this.urlphoto = urlphoto;
     }
 }

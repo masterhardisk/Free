@@ -10,53 +10,61 @@ import android.widget.TextView;
 
 import com.example.gerardo.free.R;
 import com.example.gerardo.free.mData.InfoEventos;
+import com.koushikdutta.ion.Ion;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by gerardo on 11/06/16.
+ * Created by MasterHardisk on 11/06/16.
  */
 public class EventosAdapter extends RecyclerView.Adapter <EventosAdapter.MyViewHolder>{
 
-    private LayoutInflater inflater;
-    List<InfoEventos> data = Collections.emptyList();
+    Context c;
+    ArrayList<InfoEventos> eventos;
 
-    public EventosAdapter(Context context, List<InfoEventos> data){
-        inflater= LayoutInflater.from(context);
-        this.data = data;
+    public EventosAdapter(Context context, ArrayList<InfoEventos> eventos){
+        this.c = context;
+        this.eventos = eventos;
+
 
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.eventos_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventos_row, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        InfoEventos current = data.get(position);
-        holder.title.setText(current.getTitle());
-        holder.date.setText(current.getDate());
-        holder.icon.setImageResource(current.getIconId());
+            System.out.println(position);
+            holder.titulo.setText(eventos.get(position).getTitulo());
+            holder.fecha.setText(eventos.get(position).getFecha());
+            Ion.with(holder.foto)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .load(eventos.get(position).getUrlphoto());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return eventos.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title;
-        TextView date;
-        ImageView icon;
+        TextView titulo;
+        TextView fecha;
+        ImageView foto;
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.textViewEventos);
-            date = (TextView) itemView.findViewById(R.id.textViewFecha);
-            icon = (ImageView) itemView.findViewById(R.id.imageViewEventos);
+            titulo = (TextView) itemView.findViewById(R.id.textViewEventos);
+            fecha = (TextView) itemView.findViewById(R.id.textViewFecha);
+            foto = (ImageView) itemView.findViewById(R.id.imageViewEventos);
         }
     }
+
 }

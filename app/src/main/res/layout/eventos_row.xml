@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.CardView app:cardBackgroundColor="@color/cardview_dark_background"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -18,30 +22,33 @@
         android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Large Text"
         android:id="@+id/textViewFecha"
         android:layout_alignBottom="@+id/imageViewEventos"
         android:layout_toRightOf="@+id/imageViewEventos"
-        android:layout_toEndOf="@+id/imageViewEventos" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="false"
+        android:clickable="false"
+        android:elegantTextHeight="false"
+        android:nestedScrollingEnabled="false"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse"
         android:text="Large Text"
         android:id="@+id/textViewEventos"
         android:layout_alignTop="@+id/imageViewEventos"
-        android:layout_toRightOf="@+id/imageViewEventos" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:id="@+id/separador"
-        android:background="@drawable/separador"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toRightOf="@+id/imageViewEventos"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:elegantTextHeight="false"
+        android:layout_above="@+id/textViewFecha"
+        android:textAlignment="textEnd" />
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>

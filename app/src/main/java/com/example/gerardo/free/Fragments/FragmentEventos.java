@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gerardo.free.FireDataBase.FireBaseEventos;
 import com.example.gerardo.free.mRecyclerView.EventosAdapter;
 import com.example.gerardo.free.mData.InfoEventos;
 import com.example.gerardo.free.R;
+import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,55 +22,22 @@ import java.util.List;
  */
 
 public class FragmentEventos extends Fragment {
+    final static String DB_URL="https://pubfreestyle.firebaseio.com/eventos";
+    FireBaseEventos fireBaseEventos;
     private RecyclerView recyclerView;
-    private EventosAdapter adapter;
-
+    private LinearLayoutManager mLayoutManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout=inflater.inflate(R.layout.fragment_eventos, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerviewEventos);
-        adapter= new EventosAdapter(getActivity(), getData());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        fireBaseEventos = new FireBaseEventos(getContext().getApplicationContext(), DB_URL, recyclerView);
+        fireBaseEventos.refreshData();
         return layout;
     }
 
-    public static List<InfoEventos> getData(){
-        List<InfoEventos> data = new ArrayList<>();
-        int[] icons={
-                R.drawable.festafreestyle,
-                R.drawable.llolipop_colors,
-                R.drawable.session_freestyle,
-                R.drawable.festa_kutreparty,
-                R.drawable.festafreestyle,
-                R.drawable.session_freestyle
-        };
-        String[] titles={
-                "Festa FreeStyle",
-                "Llolipop Color",
-                "Sessió Free",
-                "la GRAN Kutreparty",
-                "Festa FreeStyle",
-                "Sessió Free"
-        };
-        String[] dates= {
-                "11 de juny",
-                "18 de juny",
-                "24 de juny",
-                "25 de juny",
-                "08 de July",
-                "09 de july"
-        };
 
-        for(int i=0;i<titles.length && i<dates.length && i<icons.length;i++){
-            InfoEventos current = new InfoEventos();
-            current.setIconId(icons[i]);
-            current.setTitle(titles[i]);
-            current.setDate(dates[i]);
-            data.add(current);
-        }
-        return data;
-    }
 
 }

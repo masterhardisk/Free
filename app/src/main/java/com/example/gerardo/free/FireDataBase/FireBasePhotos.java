@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by MasterHardisk on 12/06/16.
  */
-public class FireBaseClient {
+public class FireBasePhotos {
     private Context context;
     String DB_URL;
     RecyclerView recyclerView;
@@ -24,7 +24,7 @@ public class FireBaseClient {
     ArrayList<String> photos;
     PhotosAdapter photosAdapter;
 
-    public FireBaseClient(Context c, String DB_URL, RecyclerView recyclerView) {
+    public FireBasePhotos(Context c, String DB_URL, RecyclerView recyclerView) {
         this.context = c;
         this.DB_URL = DB_URL;
         this.recyclerView = recyclerView;

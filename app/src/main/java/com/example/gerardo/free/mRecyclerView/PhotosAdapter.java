@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.gerardo.free.R;
-import com.example.gerardo.free.mData.InfoPhoto;
-import com.example.gerardo.free.mIon.IonClient;
 import com.koushikdutta.ion.Ion;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,15 +37,12 @@ public class PhotosAdapter extends RecyclerView.Adapter <PhotosAdapter.MyViewHol
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
         if(context!=null) {
-           Ion.with(context)
-                   .load(photos.get(position))
-                   .withBitmap()
-                   .intoImageView(holder.photo);
+            Ion.with(holder.photo)
+                   .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                   .load(photos.get(position));
        }
-       //IonClient.downloadImage(c, photos.get(position).toString(), holder.photo);
-
     }
 
     @Override
