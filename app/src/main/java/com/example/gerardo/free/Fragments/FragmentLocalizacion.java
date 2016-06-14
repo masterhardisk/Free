@@ -21,6 +21,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class FragmentLocalizacion extends Fragment implements OnMapReadyCallback{
     private SupportMapFragment mMap;
+    private String marcador;
+    private int numero = R.string.hereiam;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class FragmentLocalizacion extends Fragment implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap map) {
+        marcador = getString(R.string.hereiam);
+
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map.setMyLocationEnabled(true);
         map.setTrafficEnabled(true);
@@ -42,7 +47,7 @@ public class FragmentLocalizacion extends Fragment implements OnMapReadyCallback
                 new LatLng(40.71533, 0.57694), 17));
         map.addMarker(new MarkerOptions()
                 .title("FREESTYLE")
-                .snippet("Aqui es la fiesta")
+                .snippet(marcador)
                 .position(new LatLng(40.71533, 0.57694)));
 
 

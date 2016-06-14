@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FreeStyle</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="no_events">No hi ha esdeveniments</string>
+    <string name="no_photos">No hi ha fotos</string>
+    <string name="title_event">Esdeveniments</string>
+    <string name="title_localization">Localització</string>
+    <string name="title_images">Imatges</string>
+    <string name="title_help">Ajuda</string>
+    <string name="hereiam">AQUI ÉS LA FESTA</string>
+</resources>

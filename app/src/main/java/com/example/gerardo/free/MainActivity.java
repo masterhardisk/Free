@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.main_content, fragmentEventos, "Eventos");
             transaction.commit();
             mDrawerLayout.closeDrawer(mDrawer);
+            mtoolbar.setTitle(item.getTitle() + " FreeStyle");
         }
         if(item.getItemId()== R.id.navigation_item2){
             fragmentLocalizacion = new FragmentLocalizacion();
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.main_content, fragmentLocalizacion, "Localizacion");
             transaction.commit();
             mDrawerLayout.closeDrawer(mDrawer);
+            mtoolbar.setTitle(item.getTitle());
         }
         if(item.getItemId()==R.id.navigation_item3){
             fragmentImages = new FragmentImages();
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.main_content, fragmentImages, "Imagenes");
             transaction.commit();
             mDrawerLayout.closeDrawer(mDrawer);
+            mtoolbar.setTitle(item.getTitle());
         }
         if(item.getItemId()==R.id.navigation_item4){
             fragmentAyuda = new FragmentAyuda();
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.main_content, fragmentAyuda,"Ayuda");
             transaction.commit();
             mDrawerLayout.closeDrawer(mDrawer);
+            mtoolbar.setTitle(item.getTitle());
         }
 
         return false;

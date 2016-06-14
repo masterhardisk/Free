@@ -3,6 +3,7 @@ package com.example.gerardo.free.FireDataBase;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.gerardo.free.R;
 import com.example.gerardo.free.mData.InfoPhoto;
 import com.example.gerardo.free.mRecyclerView.PhotosAdapter;
 import com.firebase.client.DataSnapshot;
@@ -64,7 +65,7 @@ public class FireBasePhotos {
             photosAdapter = new PhotosAdapter(context, photos);
             recyclerView.setAdapter(photosAdapter);
         }else{
-            System.out.println("No hay fotos");
+            System.out.println(R.string.no_photos);
         }
     }
 }

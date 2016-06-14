@@ -3,6 +3,7 @@ package com.example.gerardo.free.FireDataBase;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.gerardo.free.R;
 import com.example.gerardo.free.mData.InfoEventos;
 import com.example.gerardo.free.mRecyclerView.EventosAdapter;
 import com.firebase.client.DataSnapshot;
@@ -61,7 +62,7 @@ public class FireBaseEventos {
             eventosAdapter = new EventosAdapter(c, eventos);
             recyclerView.setAdapter(eventosAdapter);
         }else{
-            System.out.println("No hay Eventos");
+            System.out.println(R.string.no_events);
         }
 
     }
