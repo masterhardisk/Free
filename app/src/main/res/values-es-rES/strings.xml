@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FreeStyle</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="cancel">Cancelar</string>
+    <string name="no_events">no hay eventos</string>
+    <string name="no_photos">no hay fotos</string>
+    <string name="title_event">Eventos</string>
+    <string name="title_localization">Localización</string>
+    <string name="title_images">Imágenes</string>
+    <string name="title_help">Ayuda</string>
+    <string name="hereiam">AQUI ES LA FIESTA</string>
+    <string name="save_new_photo">Guardar Imatge</string>
+    <string name="addphoto">Agregar nueva Imagen</string>
+    <string name="ERROR">Algo ha salido mal</string>
+    <string name="MAKE_A_PHOTO">Haz una foto o elige de tu galeria</string>
+    <string name="WAIT">Guardando, por favor espere</string>
+    <string name="SUCCESS">Se ha guardado con exito</string>
+</resources>

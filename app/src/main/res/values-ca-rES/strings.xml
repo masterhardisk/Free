@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FreeStyle</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="cancel">cancel·lar</string>
+    <string name="no_events">No hi ha esdeveniments</string>
+    <string name="no_photos">No hi ha fotos</string>
+    <string name="title_event">Esdeveniments</string>
+    <string name="title_localization">Localització</string>
+    <string name="title_images">Imatges</string>
+    <string name="title_help">Ajuda</string>
+    <string name="hereiam">AQUI ÉS LA FESTA</string>
+    <string name="save_new_photo">Afegir Foto</string>/
+    <string name="addphoto">Afegir nova imatge</string>
+    <string name="ERROR">Alguna cosa ha sortit malament</string>
+    <string name="MAKE_A_PHOTO">Fes una foto o tria de la teva galeria</string>
+    <string name="WAIT">Guardant , si us plau esperi</string>
+    <string name="SUCCESS">S\'ha guardat amb èxit</string>
+</resources>
