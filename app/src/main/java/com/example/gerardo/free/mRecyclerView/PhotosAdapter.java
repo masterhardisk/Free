@@ -39,8 +39,8 @@ public class PhotosAdapter extends RecyclerView.Adapter <PhotosAdapter.MyViewHol
     public void onBindViewHolder(MyViewHolder holder, int position) {
         if(context!=null) {
             Ion.with(holder.photo)
-                   .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.error)
+                   .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_error)
                    .load(photos.get(position));
        }
     }

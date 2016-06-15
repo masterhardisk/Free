@@ -1,7 +1,9 @@
 package com.example.gerardo.free.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gerardo.free.AddPhoto;
 import com.example.gerardo.free.FireDataBase.FireBasePhotos;
 import com.example.gerardo.free.R;
 /**
@@ -19,7 +22,6 @@ public class FragmentImages extends Fragment {
     FireBasePhotos fireBasePhotos;
     private RecyclerView recyclerView;
     private StaggeredGridLayoutManager mLayoutManager;
-
 
     @Nullable
     @Override
@@ -32,6 +34,15 @@ public class FragmentImages extends Fragment {
         recyclerView.setItemAnimator(null);
         fireBasePhotos = new FireBasePhotos(getContext().getApplicationContext(), DB_URL, recyclerView);
         fireBasePhotos.refreshData();
+
+        FloatingActionButton newPage = (FloatingActionButton) view.findViewById(R.id.btnadd);
+        newPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext().getApplicationContext(), AddPhoto.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

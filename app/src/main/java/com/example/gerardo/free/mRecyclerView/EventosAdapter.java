@@ -43,8 +43,8 @@ public class EventosAdapter extends RecyclerView.Adapter <EventosAdapter.MyViewH
             holder.titulo.setText(eventos.get(position).getTitulo());
             holder.fecha.setText(eventos.get(position).getFecha());
             Ion.with(holder.foto)
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.error)
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_error)
                     .load(eventos.get(position).getUrlphoto());
 
 
