@@ -15,6 +15,7 @@
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
     <RelativeLayout
+        android:id="@+id/frag_fotos"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

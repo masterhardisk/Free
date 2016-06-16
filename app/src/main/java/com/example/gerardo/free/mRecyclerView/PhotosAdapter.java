@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.gerardo.free.FireDataBase.FireBasePhotos;
 import com.example.gerardo.free.R;
 import com.koushikdutta.ion.Ion;
 
@@ -20,6 +21,7 @@ public class PhotosAdapter extends RecyclerView.Adapter <PhotosAdapter.MyViewHol
     private LayoutInflater inflater;
     Context context;
     List<String> photos = Collections.emptyList();
+    FireBasePhotos fireBasePhotos;
 
     public PhotosAdapter(Context c, List<String> photos){
         this.context = c;

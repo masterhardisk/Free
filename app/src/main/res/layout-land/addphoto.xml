@@ -1,13 +1,13 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:anndroid="http://schemas.android.com/tools">
     <RelativeLayout
         android:id="@+id/addphoto"
         android:background="#000000"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/addphoto_bar"
@@ -25,11 +25,10 @@
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_save"
-            android:layout_marginLeft="34dp"
-            android:layout_marginStart="34dp"
-            android:layout_alignTop="@+id/fabCamera"
-            android:layout_toRightOf="@+id/fabCamera"
-            android:layout_toEndOf="@+id/fabCamera" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="90dp" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabCamera"
             android:layout_width="wrap_content"
@@ -37,9 +36,10 @@
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_camera"
-            android:layout_marginBottom="44dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignTop="@+id/frameLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabGallery"
             android:layout_width="wrap_content"
@@ -47,34 +47,40 @@
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_gallery"
+            android:layout_gravity="right|center_vertical"
             android:layout_marginRight="33dp"
             android:layout_marginEnd="33dp"
-            android:layout_below="@+id/frameLayout"
+            android:layout_alignTop="@+id/frameLayout"
             android:layout_toLeftOf="@+id/fabCamera"
             android:layout_toStartOf="@+id/fabCamera" />
+
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/fabSave"
             android:layout_below="@+id/addphoto_bar"
-            android:id="@+id/frameLayout">
+            android:id="@+id/frameLayout"
+            android:layout_toStartOf="@+id/fabGallery"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/fabGallery">
+
+
 
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/addphotoView"
-                android:layout_gravity="center" />
+                android:layout_gravity="right|center_vertical" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
+                anndroid:id="@+id/progressBar"
                 android:layout_gravity="center"
                 android:visibility="invisible" />
 
         </FrameLayout>
-
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

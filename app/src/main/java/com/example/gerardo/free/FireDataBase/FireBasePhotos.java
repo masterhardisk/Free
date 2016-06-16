@@ -3,6 +3,7 @@ package com.example.gerardo.free.FireDataBase;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.gerardo.free.R;
 import com.example.gerardo.free.mData.InfoPhoto;
@@ -38,24 +39,48 @@ public class FireBasePhotos {
 
 
 
-    public void refreshData(){
-        fire.addValueEventListener(new ValueEventListener() {
+    public void refreshData(final View view){
+        ValueEventListener addUrlListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 getUpdates(dataSnapshot);
-
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        };
+        fire.addValueEventListener(addUrlListener);
 
+        ChildEventListener refreshURL = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
             }
 
-        });
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
 
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Snackbar.make(view, "se ha eliminado una foto desde el servidor", Snackbar.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Snackbar.make(view, R.string.ERROR, Snackbar.LENGTH_SHORT).show();
+
+            }
+        };
+        fire.addChildEventListener(refreshURL);
     }
     private void getUpdates(DataSnapshot dataSnapshot){
 
@@ -74,33 +99,5 @@ public class FireBasePhotos {
         }
     }
 
-    public void refreshRV(){
-        fire.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-    }
 }

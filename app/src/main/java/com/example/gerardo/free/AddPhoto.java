@@ -1,9 +1,12 @@
 package com.example.gerardo.free;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +48,7 @@ public class AddPhoto extends AppCompatActivity {
     StorageReference storageRef = storage.getReferenceFromUrl("gs://project-6423673664632179304.appspot.com/");
     String urlphoto = "";
     Toolbar mtoolbar;
-    private final int ADD_REQUEST = 57841;
+    public static Activity addfoto;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class AddPhoto extends AppCompatActivity {
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.addphoto);
-
+        addfoto = this;
         fabCamera = (FloatingActionButton) findViewById(R.id.fabCamera);
         fabGallery = (FloatingActionButton) findViewById(R.id.fabGallery);
         fabSave = (FloatingActionButton) findViewById(R.id.fabSave);
@@ -87,10 +90,10 @@ public class AddPhoto extends AppCompatActivity {
         fabSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(urlphoto==""){
-                    Snackbar.make(view,R.string.MAKE_A_PHOTO, Snackbar.LENGTH_SHORT).show();
-                }else{
+                if(urlphoto.length()!=0){
                     UploadImage(urlphoto);
+                }else{
+                    Snackbar.make(view,R.string.MAKE_A_PHOTO, Snackbar.LENGTH_SHORT).show();
                 }
 
             }
@@ -106,7 +109,7 @@ public class AddPhoto extends AppCompatActivity {
 
                 String photoPath = cameraPhoto.getPhotoPath();
                 urlphoto = photoPath;
-                Ion.with(this).load(photoPath)
+                Ion.with(this).load(urlphoto)
                         .withBitmap()
                         .intoImageView(addPhoto);
             }
@@ -115,7 +118,7 @@ public class AddPhoto extends AppCompatActivity {
                 galleryPhoto.setPhotoUri(uri);
                 String galleryPath = galleryPhoto.getPath();
                 urlphoto = galleryPath;
-                Ion.with(this).load(galleryPath)
+                Ion.with(this).load(urlphoto)
                         .withBitmap()
                         .intoImageView(addPhoto);
 
@@ -128,27 +131,25 @@ public class AddPhoto extends AppCompatActivity {
 
     public void UploadImage(final String data){
         final UploadTask uploadTask;
-        if(data!="") {
+        if(data.length()!=0) {
             Uri file = Uri.fromFile(new File(data));
             StorageReference riversRef = storageRef.child("images/" + file.getLastPathSegment());
             uploadTask = riversRef.putFile(file);
-            Snackbar.make(findViewById(R.id.addphotoView), R.string.WAIT, Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.addphoto), R.string.WAIT, Snackbar.LENGTH_LONG).show();
 
-// Register observers to listen for when the download is done or if it fails
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    Snackbar.make(findViewById(R.id.addphotoView), R.string.ERROR, Snackbar.LENGTH_LONG).show();
-                    // Handle unsuccessful uploads
+                    Snackbar.make(findViewById(R.id.addphoto), R.string.ERROR, Snackbar.LENGTH_LONG).show();
+
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                     progressBar.setVisibility(View.GONE);
-
-                    Snackbar.make(findViewById(R.id.addphotoView), R.string.SUCCESS, Snackbar.LENGTH_SHORT).show();
                     writeNewFoto(taskSnapshot.getDownloadUrl().toString());
+                    addfoto.finish();
 
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -168,6 +169,23 @@ public class AddPhoto extends AppCompatActivity {
             DatabaseReference myRef = database.getReference("Fotos").push().child("urlphoto");
             myRef.setValue(urlphoto);
         }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("urlphoto", urlphoto);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        urlphoto = savedInstanceState.getString("urlphoto");
+        if(savedInstanceState!=null){
+            Ion.with(this).load(urlphoto)
+                    .withBitmap()
+                    .intoImageView(addPhoto);
+        }
+    }
 }
 
 

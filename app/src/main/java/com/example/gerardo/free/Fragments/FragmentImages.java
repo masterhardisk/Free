@@ -2,6 +2,7 @@ package com.example.gerardo.free.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -19,7 +20,7 @@ import com.example.gerardo.free.R;
  * Created by MasterHardisk on 10/06/16.
  */
 public class FragmentImages extends Fragment {
-    final static String DB_URL="https://pubfreestyle.firebaseio.com/Fotos";
+    final static String DB_URL = "https://pubfreestyle.firebaseio.com/Fotos";
     FireBasePhotos fireBasePhotos;
     private RecyclerView recyclerView;
     private StaggeredGridLayoutManager mLayoutManager;
@@ -29,14 +30,13 @@ public class FragmentImages extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_images, container, false);
-        recyclerView= (RecyclerView) view.findViewById(R.id.recyclerviewPhotos);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewPhotos);
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         mLayoutManager.setReverseLayout(false);
         mLayoutManager.requestLayout();
         fireBasePhotos = new FireBasePhotos(getContext().getApplicationContext(), DB_URL, recyclerView);
-        fireBasePhotos.refreshData();
-
+        fireBasePhotos.refreshData(view);
 
         final FloatingActionButton newPage = (FloatingActionButton) view.findViewById(R.id.btnadd);
         newPage.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +60,7 @@ public class FragmentImages extends Fragment {
                 newPage.setVisibility(View.INVISIBLE);
             }
         });
-
         return view;
-
-
     }
 
 
