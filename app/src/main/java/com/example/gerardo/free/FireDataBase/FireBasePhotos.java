@@ -25,14 +25,14 @@ public class FireBasePhotos {
     String DB_URL;
     RecyclerView recyclerView;
     Firebase fire;
-    ArrayList<String> photos;
+    ArrayList<InfoPhoto> photos = new ArrayList<>();
     PhotosAdapter photosAdapter;
 
     public FireBasePhotos(Context c, String DB_URL, RecyclerView recyclerView) {
         this.context = c;
         this.DB_URL = DB_URL;
         this.recyclerView = recyclerView;
-        photos = new ArrayList<>();
+
         Firebase.setAndroidContext(c);
         fire = new Firebase(DB_URL);
     }
@@ -52,42 +52,16 @@ public class FireBasePhotos {
             }
         };
         fire.addValueEventListener(addUrlListener);
-
-        ChildEventListener refreshURL = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Snackbar.make(view, "se ha eliminado una foto desde el servidor", Snackbar.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                getUpdates(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Snackbar.make(view, R.string.ERROR, Snackbar.LENGTH_SHORT).show();
-
-            }
-        };
-        fire.addChildEventListener(refreshURL);
     }
+
     private void getUpdates(DataSnapshot dataSnapshot){
 
         photos.clear();
         for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-            InfoPhoto photo = dataSnapshot1.getValue(InfoPhoto.class);
-            photos.add(photo.getUrlphoto());
+
+            InfoPhoto photo = new InfoPhoto();
+            photo.setUrlphoto(dataSnapshot1.getValue(InfoPhoto.class).getUrlphoto());
+            photos.add(photo);
         }
         if(photos.size()>0 && context!=null){
 
