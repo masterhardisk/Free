@@ -33,28 +33,12 @@ public class FragmentImages extends Fragment {
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         mLayoutManager.setReverseLayout(false);
-       mLayoutManager.requestLayout();
+        mLayoutManager.requestLayout();
         fireBasePhotos = new FireBasePhotos(getContext().getApplicationContext(), DB_URL, recyclerView);
         fireBasePhotos.refreshData();
 
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                return false;
-            }
 
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-
-        FloatingActionButton newPage = (FloatingActionButton) view.findViewById(R.id.btnadd);
+        final FloatingActionButton newPage = (FloatingActionButton) view.findViewById(R.id.btnadd);
         newPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +46,24 @@ public class FragmentImages extends Fragment {
                 startActivityForResult(intent, ADD_REQUEST);
             }
         });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                newPage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                newPage.setVisibility(View.INVISIBLE);
+            }
+        });
+
         return view;
+
+
     }
 
 

@@ -1,11 +1,13 @@
 package com.example.gerardo.free.FireDataBase;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.gerardo.free.R;
 import com.example.gerardo.free.mData.InfoPhoto;
 import com.example.gerardo.free.mRecyclerView.PhotosAdapter;
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -41,6 +43,7 @@ public class FireBasePhotos {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 getUpdates(dataSnapshot);
+
             }
 
             @Override
@@ -48,6 +51,7 @@ public class FireBasePhotos {
                 System.out.println("The read failed: " + firebaseError.getMessage());
 
             }
+
         });
 
 
@@ -64,8 +68,39 @@ public class FireBasePhotos {
 
             photosAdapter = new PhotosAdapter(context, photos);
             recyclerView.setAdapter(photosAdapter);
+
         }else{
             System.out.println(R.string.no_photos);
         }
+    }
+
+    public void refreshRV(){
+        fire.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
     }
 }

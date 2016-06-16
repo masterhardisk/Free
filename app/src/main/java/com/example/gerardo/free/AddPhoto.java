@@ -45,6 +45,7 @@ public class AddPhoto extends AppCompatActivity {
     StorageReference storageRef = storage.getReferenceFromUrl("gs://project-6423673664632179304.appspot.com/");
     String urlphoto = "";
     Toolbar mtoolbar;
+    private final int ADD_REQUEST = 57841;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
